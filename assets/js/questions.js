@@ -19,7 +19,7 @@ const questions = {
         } ,  
     four: {
         ask:"What does the keyword ' this ' refer to?",
-         options:["Refer to?", "The Window", "The Global Object", "Its parent object" ],
+         options:["Refer to?", "The Window", "The Global Object", "Its parent object"],
             answer: 4 
         } ,
     five: {
@@ -62,7 +62,6 @@ const questions = {
          options:["(10, 9)", "Boolean[0]", "true", "NaN"], 
           answer: 3
         },
-    buttonNum: [1, 2, 3, 4]
 
     // updateText() { 
     //     for (let key in this) {
@@ -77,15 +76,18 @@ const questions = {
 let questKeys = Object.keys(questions);
 let askArray = [];
 let optionsArray = [];
+let answerArray = [];
 questKeys.forEach((property) => {
     askArray.push(questions[property].ask);
     optionsArray.push(questions[property].options);
+    answerArray.push(questions[property].answer);
 }) 
 console.log(questKeys);
 console.log(questions["one"]);
 
 console.log(askArray);
 console.log(optionsArray);
+console.log(answerArray);
 
 
 const questionTitle = document.getElementById('question-title');

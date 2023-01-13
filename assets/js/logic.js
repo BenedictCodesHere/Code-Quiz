@@ -22,7 +22,7 @@ const allAnswers = [2, 4, 2, 4, 3, ]
 const allSelections = [];
 let countdown = 60;
 function countingDown() {
-    if (countdown == 0) {
+    if (!(countdown > 0)) {
         clearInterval(myInterval);
         questionDiv.classList.add('hide');
         endScreen.classList.remove('hide');
@@ -100,16 +100,45 @@ choiceBtn4.innerText = optionsArray[index][3];
 
 // FIRST
     // Assign values 1 - 4 to the choice-btns
+    let userSelection = 0;
+
 // SECOND
     // If user clicks button 1, return 1 e.target.getAttribute('id').charAt(id.length - 1)
 // THIRD
     // evaluate answer which has been pulled from answer array
-
-
+// FOURTH 
+    // compare answer with whichever value the user clicked. If strict equality, then score++
+    let finalScore = document.getElementById('final-score');
+let assignNumber = 0;
+let index2 = 0;
 document.querySelector('#choices').addEventListener
-('click', newQuestion)
+('click', function(e){
+    
+    assignNumber = Number(e.target.getAttribute('name'));
+    console.log(assignNumber);
+     if (assignNumber == answerArray[index2] ) {
+        console.log(`${assignNumber} is equal to ${answerArray[index2]}`);
+        score++;
+        console.log(`Score: ${score}`);
+     } else {console.log(`${assignNumber} is NOT equal to ${answerArray[index2]}`);
+        console.log(`Score: ${score}`);
+        
+        countdown -= 10;
+     }
+        index2++;
+        return score;
+});
+
+// this is the part I am still having issues with
+finalScore.innerText = `Your final score is ${score}`;
+
+A
+document.querySelector('#choices').addEventListener
+('click', newQuestion);
 
 
 console.log(choices.children);
 console.log(questKeys);
 console.log(questions["one"]);
+console.log("______________________________-----------______");
+
