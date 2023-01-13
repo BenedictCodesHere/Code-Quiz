@@ -17,8 +17,7 @@
 // timer starts upon clicking start button
 
 // add an eventListener to the start button
-const seconds = Array(60)
-let countdown = seconds.length;
+let countdown = 60;
 function countingDown() {
     if (countdown == 0) {
         clearInterval(myInterval);
@@ -29,13 +28,15 @@ function countingDown() {
         time.innerText = countdown;
     }   
 }
-console.log(seconds);
 const startBtn = document.querySelector("#start");
 const startScreen = document.getElementById('start-screen')
 const questionDiv = document.getElementById('questions');
 const endScreen = document.getElementById('end-screen');
 const time = document.getElementById('time');
 startBtn.addEventListener('click', startGame);
+const choices = document.getElementById('choices');
+
+
 
 const myInterval = function(){
     setInterval(countingDown, 1000);
@@ -67,10 +68,36 @@ function startGame () {
 
     // if timer reaches zero, hide #questions. Unhide #end-screen
    
-   
-    
+
+
+
+    // when the event ONCLICK happens, update to next question:
+        // update questionTitle.innerText
+        // update choiceBtn
+
+//         questionTitle.innerText = questions.one.ask;
+
+// for let property in questions 
+// choiceBtn1.innerText = questions.one.options[0];
+// choiceBtn2.innerText = questions.one.options[1];
+// choiceBtn3.innerText = questions.one.options[2];
+// choiceBtn4.innerText = questions.one.options[3];
+let index = 0;
+const newQuestion = function () {
+    index++;
+ 
+questionTitle.innerText = askArray[index];
+choiceBtn1.innerText = optionsArray[index][0];
+choiceBtn2.innerText = optionsArray[index][1];
+choiceBtn3.innerText = optionsArray[index][2];
+choiceBtn4.innerText = optionsArray[index][3];
+}
   
 
+document.querySelector('#choices').addEventListener
+('click', newQuestion)
 
 
-console.log(questionDiv);
+console.log(choices.children);
+console.log(questKeys);
+console.log(questions["one"]);
