@@ -17,6 +17,9 @@
 // timer starts upon clicking start button
 
 // add an eventListener to the start button
+let score = 0;
+const allAnswers = [2, 4, 2, 4, 3, ]
+const allSelections = [];
 let countdown = 60;
 function countingDown() {
     if (countdown == 0) {
@@ -85,7 +88,7 @@ function startGame () {
 let index = 0;
 const newQuestion = function () {
     index++;
- 
+ // call a function HERE
 questionTitle.innerText = askArray[index];
 choiceBtn1.innerText = optionsArray[index][0];
 choiceBtn2.innerText = optionsArray[index][1];
@@ -93,6 +96,15 @@ choiceBtn3.innerText = optionsArray[index][2];
 choiceBtn4.innerText = optionsArray[index][3];
 }
   
+// HERE this function should evaluate if answer = user input
+
+// FIRST
+    // Assign values 1 - 4 to the choice-btns
+// SECOND
+    // If user clicks button 1, return 1 e.target.getAttribute('id').charAt(id.length - 1)
+// THIRD
+    // evaluate answer which has been pulled from answer array
+
 
 document.querySelector('#choices').addEventListener
 ('click', newQuestion)
