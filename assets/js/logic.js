@@ -126,15 +126,37 @@ document.querySelector('#choices').addEventListener
         countdown -= 10;
      }
         index2++;
-        return score;
+        return finalScore.innerText = `${score}`;
 });
 
 // this is the part I am still having issues with
-finalScore.innerText = `Your final score is ${score}`;
 
-A
+
+
 document.querySelector('#choices').addEventListener
 ('click', newQuestion);
+
+
+
+
+
+document.querySelector('#submit').addEventListener
+('click', function(event) {
+    event.preventDefault();
+
+    var initials = document.querySelector("#initials").value;
+    if (initials === "") {
+        alert("Please type your initials");
+      } else {
+        localStorage.setItem("initials", initials);
+        localStorage.setItem("score", finalScore.innerText);
+    
+      }
+});
+
+
+
+
 
 
 console.log(choices.children);
