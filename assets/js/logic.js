@@ -38,6 +38,7 @@ const endScreen = document.getElementById('end-screen');
 const time = document.getElementById('time');
 startBtn.addEventListener('click', startGame);
 const choices = document.getElementById('choices');
+const feedback = document.querySelector('#feedback')
 
 
 
@@ -119,10 +120,11 @@ document.querySelector('#choices').addEventListener
      if (assignNumber == answerArray[index2] ) {
         console.log(`${assignNumber} is equal to ${answerArray[index2]}`);
         score++;
+        playAudio(correctSound);
         console.log(`Score: ${score}`);
      } else {console.log(`${assignNumber} is NOT equal to ${answerArray[index2]}`);
         console.log(`Score: ${score}`);
-        
+        playAudio(incorrectSound);
         countdown -= 10;
      }
         index2++;
@@ -147,16 +149,20 @@ document.querySelector('#submit').addEventListener
     var initials = document.querySelector("#initials").value;
     if (initials === "") {
         alert("Please type your initials");
+      } else if (initials.length > 3) {
+        alert('maximum 3 letters')
       } else {
         localStorage.setItem("initials", initials);
         localStorage.setItem("score", finalScore.innerText);
-    
       }
+      feedback.classList.remove('hide');
 });
 
-
-
-
+const correctSound = document.querySelector('#correct');
+const incorrectSound = document.querySelector('#incorrect');
+function playAudio(input) {
+    input.play();
+}
 
 
 console.log(choices.children);

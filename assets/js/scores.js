@@ -1,24 +1,32 @@
 let displayHighScores = document.querySelector('#highscores')
 const insertAnotherScore = document.createElement('li');
-
-
+let initialsList = [];
+initialsList.push(localStorage.getItem("initials"));
 
 function renderHighScores() {
+   
     let displayInitialsList = localStorage.getItem("initials");
     let displayScoreList = localStorage.getItem("score");
-    if (!displayInitialsList || !displayScoreList) {
+    if (displayInitialsList === "") {
         return;
-    } 
+    } else if (typeof displayInitialsList == "string") {
+        
+        
+        initialsList.push(displayInitialsList);
+        console.log(initialsList);
+    }
     
     displayHighScores.appendChild(insertAnotherScore);
-    displayHighScores.lastChild.innerText =`${displayInitialsList}: ${displayScoreList}`;
+    return displayHighScores.lastChild.innerText =`${displayInitialsList}: ${displayScoreList}`;
     
     
 }
 
-
-renderHighScores();
-
+if (!document.hidden){
+    renderHighScores();
+    console.log(initialsList);
+}
+console.log(initialsList);
 console.log(displayHighScores.lastChild);
 
 let clearButton = document.querySelector('#clear')
