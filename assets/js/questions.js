@@ -1,6 +1,3 @@
-// You want questions and answers
-
-// you want to edit the innertext of the variable #question-title
 const questions = {
     one: {
         ask:"What is the ' typeof ' an array?",
@@ -62,14 +59,16 @@ const questions = {
          options:["(10, 9)", "Boolean[0]", "true", "NaN"], 
           answer: 3
         },
-
-    // updateText() { 
-    //     for (let key in this) {
-    //         if (this[key] == true){
-    //             this.trueKeyArray.push(key);
-    //           }
-    //     }
-    // }
+    thirteen: {
+            ask:"JavaScript is a ___ -side programming language.",
+             options:["Client", "Server", "Both", "None"], 
+              answer: 3
+            },
+    fourteen: {
+            ask:"Which are the correct “if” statements to execute certain code if “x” is equal to 2?",
+             options:["if(x == 2)", "if(x2)", "if(x = 2)", "if(x != 2)"], 
+              answer: 1
+            },
 }
 
 

@@ -54,39 +54,11 @@ function startGame () {
     // remove the .hide class from the questions div
     questionDiv.classList.remove('hide');
     startScreen.classList.add('hide');
-
     // the timer with id #time's innertext
     time.innerText = countdown;
     myInterval();
-    
-    
-    
-        // clearInterval(myInterval);
     }
     
-        
-    
-    //if (countdown = 0){
-      //  questionDiv.classList.add('hide');
-        //endScreen.classList.remove('hide');
-        
-
-    // if timer reaches zero, hide #questions. Unhide #end-screen
-   
-
-
-
-    // when the event ONCLICK happens, update to next question:
-        // update questionTitle.innerText
-        // update choiceBtn
-
-//         questionTitle.innerText = questions.one.ask;
-
-// for let property in questions 
-// choiceBtn1.innerText = questions.one.options[0];
-// choiceBtn2.innerText = questions.one.options[1];
-// choiceBtn3.innerText = questions.one.options[2];
-// choiceBtn4.innerText = questions.one.options[3];
 let index = 0;
 const newQuestion = function () {
     index++;
