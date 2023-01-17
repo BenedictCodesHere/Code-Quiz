@@ -23,6 +23,7 @@ const allSelections = [];
 let countdown = 60;
 function countingDown() {
     if (!(countdown > 0)) {
+
         clearInterval(myInterval);
         questionDiv.classList.add('hide');
         endScreen.classList.remove('hide');
@@ -96,20 +97,10 @@ choiceBtn2.innerText = optionsArray[index][1];
 choiceBtn3.innerText = optionsArray[index][2];
 choiceBtn4.innerText = optionsArray[index][3];
 }
-  
-// HERE this function should evaluate if answer = user input
 
-// FIRST
-    // Assign values 1 - 4 to the choice-btns
-    let userSelection = 0;
 
-// SECOND
-    // If user clicks button 1, return 1 e.target.getAttribute('id').charAt(id.length - 1)
-// THIRD
-    // evaluate answer which has been pulled from answer array
-// FOURTH 
-    // compare answer with whichever value the user clicked. If strict equality, then score++
-    let finalScore = document.getElementById('final-score');
+
+let finalScore = document.getElementById('final-score');
 let assignNumber = 0;
 let index2 = 0;
 document.querySelector('#choices').addEventListener
@@ -123,7 +114,7 @@ document.querySelector('#choices').addEventListener
         playAudio(correctSound);
         console.log(`Score: ${score}`);
      } else {console.log(`${assignNumber} is NOT equal to ${answerArray[index2]}`);
-        console.log(`Score: ${score}`);
+        console.log(`Score remains: ${score}`);
         playAudio(incorrectSound);
         countdown -= 10;
      }
@@ -131,29 +122,32 @@ document.querySelector('#choices').addEventListener
         return finalScore.innerText = `${score}`;
 });
 
-// this is the part I am still having issues with
-
 
 
 document.querySelector('#choices').addEventListener
 ('click', newQuestion);
 
 
+let initialsArray = [JSON.parse(localStorage.getItem("initialsArray"))];
+let scoreArray = [JSON.parse(localStorage.getItem("scoreArray"))];
 
 
 
 document.querySelector('#submit').addEventListener
 ('click', function(event) {
     event.preventDefault();
-
     var initials = document.querySelector("#initials").value;
     if (initials === "") {
         alert("Please type your initials");
       } else if (initials.length > 3) {
         alert('maximum 3 letters')
       } else {
-        localStorage.setItem("initials", initials);
-        localStorage.setItem("score", finalScore.innerText);
+        initialsArray.push(initials);
+        scoreArray.push(finalScore.innerText)
+        if (initialsArray[0] === null) {initialsArray.shift()}
+        if (scoreArray[0] === null) {scoreArray.shift()}
+        localStorage.setItem("initialsArray", JSON.stringify(initialsArray));
+        localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
       }
       feedback.classList.remove('hide');
 });
@@ -169,4 +163,3 @@ console.log(choices.children);
 console.log(questKeys);
 console.log(questions["one"]);
 console.log("______________________________-----------______");
-

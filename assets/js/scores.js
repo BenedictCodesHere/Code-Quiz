@@ -1,32 +1,33 @@
 let displayHighScores = document.querySelector('#highscores')
-const insertAnotherScore = document.createElement('li');
-let initialsList = [];
-initialsList.push(localStorage.getItem("initials"));
+const nestedInitials = JSON.parse(localStorage.getItem("initialsArray"));
+let nestedScores = JSON.parse(localStorage.getItem("scoreArray"));
+
+const initialsList = nestedInitials.flat(Infinity);
+const scoresList = nestedScores.flat(Infinity);
 
 function renderHighScores() {
-   
-    let displayInitialsList = localStorage.getItem("initials");
-    let displayScoreList = localStorage.getItem("score");
-    if (displayInitialsList === "") {
+    if (initialsList === "") {
         return;
-    } else if (typeof displayInitialsList == "string") {
+    } else {
+        for (let i = 0; i < initialsList.length; i++) {
+            var todo = `${initialsList[i]}: ${scoresList[i]}`;
+            var li = document.createElement("li");
+            li.textContent = todo;
+            displayHighScores.appendChild(li); 
+         
+            
+        }
         
         
-        initialsList.push(displayInitialsList);
-        console.log(initialsList);
+       // return displayHighScores.lastChild.innerText 
     }
-    
-    displayHighScores.appendChild(insertAnotherScore);
-    return displayHighScores.lastChild.innerText =`${displayInitialsList}: ${displayScoreList}`;
-    
-    
 }
 
 if (!document.hidden){
     renderHighScores();
-    console.log(initialsList);
+ 
 }
-console.log(initialsList);
+
 console.log(displayHighScores.lastChild);
 
 let clearButton = document.querySelector('#clear')
