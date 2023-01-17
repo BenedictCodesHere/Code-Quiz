@@ -32,7 +32,7 @@ const questions = {
     seven: {
         ask:"How do you create a function in JavaScript?",
          options:["function:myFunction()", "function myFunction()", "function = myFunction()", "O Function! myFunction!"], 
-            answer: 3
+            answer: 2
         } ,
     eight: {
         ask:"How do you call a function named 'myFunction'?",

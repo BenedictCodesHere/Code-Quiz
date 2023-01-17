@@ -85,10 +85,14 @@ document.querySelector('#choices').addEventListener
         score++;
         playAudio(correctSound);
         console.log(`Score: ${score}`);
+        feedback.classList.remove('hide');
+        feedback.innerText = "Correct!"
      } else {console.log(`${assignNumber} is NOT equal to ${answerArray[index2]}`);
         console.log(`Score remains: ${score}`);
         playAudio(incorrectSound);
         countdown -= 10;
+        feedback.classList.remove('hide');
+        feedback.innerText = "Wrong!"
      }
         index2++;
         return finalScore.innerText = `${score}`;
