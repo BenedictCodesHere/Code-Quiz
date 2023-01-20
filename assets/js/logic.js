@@ -18,20 +18,9 @@
 
 // add an eventListener to the start button
 let score = 0;
-const allAnswers = [2, 4, 2, 4, 3, ]
-const allSelections = [];
 let countdown = 60;
-function countingDown() {
-    if (!(countdown > 0)) {
+let index = 0;
 
-        clearInterval(myInterval);
-        questionDiv.classList.add('hide');
-        endScreen.classList.remove('hide');
-    } else {
-        countdown--;
-        time.innerText = countdown;
-    }   
-}
 const startBtn = document.querySelector("#start");
 const startScreen = document.getElementById('start-screen')
 const questionDiv = document.getElementById('questions');
@@ -42,32 +31,41 @@ const choices = document.getElementById('choices');
 const feedback = document.querySelector('#feedback')
 
 
+function countingDown() {
+    if (!(countdown > 0)) {
+        time.innerText = 0;
+        questionDiv.classList.add('hide');
+        endScreen.classList.remove('hide');
+    } else {
+        countdown--;
+        time.innerText = countdown;
+    }   
+}
+
+
 
 const myInterval = function(){
     setInterval(countingDown, 1000);
+    if (!(countdown > 0)) {
+        clearInterval(myInterval);
+    }
 }
-console.log(startBtn);
-console.log(questionDiv);
 
 function startGame () {
-    // THEN a timer starts and I am presented with a question
-    // remove the .hide class from the questions div
     questionDiv.classList.remove('hide');
     startScreen.classList.add('hide');
-    // the timer with id #time's innertext
     time.innerText = countdown;
     myInterval();
     }
     
-let index = 0;
+
 const newQuestion = function () {
     index++;
- // call a function HERE
-questionTitle.innerText = askArray[index];
-choiceBtn1.innerText = optionsArray[index][0];
-choiceBtn2.innerText = optionsArray[index][1];
-choiceBtn3.innerText = optionsArray[index][2];
-choiceBtn4.innerText = optionsArray[index][3];
+    questionTitle.innerText = askArray[index];
+    choiceBtn1.innerText = optionsArray[index][0];
+    choiceBtn2.innerText = optionsArray[index][1];
+    choiceBtn3.innerText = optionsArray[index][2];
+    choiceBtn4.innerText = optionsArray[index][3];
 }
 
 
@@ -92,7 +90,7 @@ document.querySelector('#choices').addEventListener
         playAudio(incorrectSound);
         countdown -= 10;
         feedback.classList.remove('hide');
-        feedback.innerText = "Wrong!"
+        feedback.innerText = "Wrong!";
      }
         index2++;
         return finalScore.innerText = `${score}`;
